@@ -3,14 +3,12 @@ import "../assets/styles/components/Listado.scss"
 import Registro from './Registro';
 
 
-const Listado = () => {
+const Listado = ({registros}) => {
     return (
         <div className="listado">
-        <Registro/>
-        <Registro/>
-        <Registro/>
-        <Registro/>
-            
+            {registros.map((registro)=>(
+                <Registro key={registro._id} date={registro.date}/>
+            ))} 
         </div>
     )
 }

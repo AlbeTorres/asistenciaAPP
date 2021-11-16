@@ -1,10 +1,10 @@
 import React from 'react';
 import "../assets/styles/components/Registro.scss"
 
-const Registro = () => {
+const Registro = ({date}) => {
     return (
         <div className="registro">
-        <h6>Dia de mes del año</h6>
+        <h6>{date}</h6>
         <div>
         <a>Modificar</a>
         <button value="Eliminar">Eliminar</button>
