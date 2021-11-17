@@ -1,16 +1,15 @@
 import React from 'react';
-import "../assets/styles/components/Registro.scss"
 
-const Registro = ({date}) => {
+const Trabajador = ({name}) => {
     return (
         <div className="registro">
-            <h6>{date}</h6>
+            <h6>{name}</h6>
             <div>
                 <a>Modificar</a>
                 <button value="Eliminar">Eliminar</button> 
             </div>
         </div>
-    );
+    )
 }
 
-export default Registro;
+export default Trabajador;
