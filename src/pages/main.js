@@ -11,6 +11,14 @@ const Main = () => {
     const [trabajadores,setTrabajador] = useState([]);
     const [showList,setShowList]= useState(0);
 
+    const onSelected = async(id) =>{
+
+        console.log('click',id);
+        setShowList(id);
+        const {listaTrabadores}= await fetchTrabajadoresByRegistro(id);
+        setTrabajador(listaTrabadores);
+    }
+
 
 
     
@@ -52,6 +60,15 @@ const Main = () => {
         return data;
     }
 
+    const fetchTrabajadoresByRegistro = async(id)=>{
+
+        const res = await fetch(`http://127.0.0.1:3000/registros/${id}`);
+        console.log(`http://127.0.0.1:3000/registros/${id}`)
+        const data = await res.json();
+
+        return data;
+    }
+
 
 
     console.log(registros);
@@ -61,8 +78,8 @@ const Main = () => {
     return (
         <div>
         <Header/>
-        <Listado registros={registros}/>
-        <TrabajadoresLista trabajadores={trabajadores}/>
+        <Listado registros={registros} onSelect={onSelected}/>
+        {showList!=0 && <TrabajadoresLista trabajadores={trabajadores}/>}
             
         </div>
     );
