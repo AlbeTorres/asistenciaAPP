@@ -14,7 +14,7 @@ const App = () =>{
     return(<div className='App'>
     <BrowserRouter>
         <Switch>
-            <Route exact path= '/main' component={Main}/>
+            <Route exact path= '/' component={Main}/>
 
         </Switch>
     </BrowserRouter>

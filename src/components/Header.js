@@ -1,16 +1,28 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import '../assets/styles/components/Header.scss'
+import {FaSearch} from "react-icons/fa";
 
 const Header = () => {
     return (
         <div className="header">
-            <h1>Asistencia</h1>
-            
+            <div className="tittle">
+                <h1>Asistencia</h1>
                 <ul className="header-link">
-                    <li><a>Agregar Registro</a></li>
-                    <li><a>Agregar Usuario</a></li>
+                    <li><Link to='/addregistro'>
+                    <button className="addreg">Registro</button>
+                    </Link></li>
+                    <li><Link to='/addtrabajador'>
+                    <button className="addreg">Usuario</button>
+                    </Link></li>
                 </ul>
+            </div>
+            <div className="search">
+                <FaSearch className="search_icon"/>
+                <input type="text" className="prompt" placeholder="Buscar Registro" />
+            </div>
         </div>
+        
             
         
     );

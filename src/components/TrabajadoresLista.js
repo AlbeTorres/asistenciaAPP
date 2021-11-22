@@ -1,5 +1,6 @@
 import React from 'react';
 import Trabajador from './Trabajador';
+import "../assets/styles/components/Listado.scss";
 
 const TrabajadoresLista = ({trabajadores}) => {
     return (
