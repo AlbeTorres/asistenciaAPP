@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import '../assets/styles/components/Header.scss'
-import {FaSearch} from "react-icons/fa";
+
 
 const Header = () => {
     return (
@@ -16,10 +16,6 @@ const Header = () => {
                     <button className="addreg">Usuario</button>
                     </Link></li>
                 </ul>
-            </div>
-            <div className="search">
-                <FaSearch className="search_icon"/>
-                <input type="text" className="prompt" placeholder="Buscar Registro" />
             </div>
         </div>
         

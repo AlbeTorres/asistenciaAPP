@@ -11,16 +11,16 @@ import '../assets/styles/App.scss';
 const App = () =>{
 
     
-    return(<div className='App'>
-    <BrowserRouter>
-        <Switch>
-            <Route exact path= '/' component={Main}/>
+    return(
+    <div className='App'>
+        <BrowserRouter>
+            <Switch>
+                <Route exact path= '/' component={Main}/>
 
-        </Switch>
-    </BrowserRouter>
-    <Footer/>
-            
-            </div>
+            </Switch>
+        </BrowserRouter>
+        <Footer/>
+    </div>
     );}
 
 export default App;

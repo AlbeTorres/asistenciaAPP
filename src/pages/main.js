@@ -10,13 +10,29 @@ const Main = () => {
     const [registros,setRegistro] = useState([]);
     const [trabajadores,setTrabajador] = useState([]);
     const [showList,setShowList]= useState(0);
+    const [searchTerm,setSearchTerm]= useState("");
+    const [searchResult, setSearchResult]= useState([]);
 
     const onSelected = async(id) =>{
 
-        console.log('click',id);
         setShowList(id);
         const {listaTrabadores}= await fetchTrabajadoresByRegistro(id);
         setTrabajador(listaTrabadores);
+    }
+
+    const searchHandler =(searchTerm)=>{
+        setSearchTerm(searchTerm);
+        if(searchTerm!==""){
+            const newRegistroList = registros.filter((registro)=>{
+                return Object.values(registro).join(" ").toLowerCase().includes(searchTerm.toLowerCase());
+            });
+
+            setSearchResult(newRegistroList);
+        }else{
+
+            setSearchResult(registros);
+        }
+
     }
 
 
@@ -63,7 +79,6 @@ const Main = () => {
     const fetchTrabajadoresByRegistro = async(id)=>{
 
         const res = await fetch(`http://127.0.0.1:3000/registros/${id}`);
-        console.log(`http://127.0.0.1:3000/registros/${id}`)
         const data = await res.json();
 
         return data;
@@ -71,15 +86,12 @@ const Main = () => {
 
 
 
-    console.log(registros);
-    console.log(trabajadores);
-
 
     return (
         <div>
         <Header/>
-        <Listado registros={registros} onSelect={onSelected}/>
-        {showList!=0 && <TrabajadoresLista trabajadores={trabajadores}/>}
+        <Listado registros={searchTerm.length < 1 ? registros: searchResult} onSelect={onSelected} term={searchTerm} searchKeywork={searchHandler}/>
+        {showList!=0 && <TrabajadoresLista trabajadores={trabajadores} />}
             
         </div>
     );
