@@ -35,10 +35,22 @@ const TrabajadoresCRUD = () => {
         return data;
     }
 
+
+    const addWorker =async(trabajador)=>{
+
+        const res = await fetch("http://127.0.0.1:3000/trabajadores",{method:'POST', headers:{'Content-type':'application/json'},body:JSON.stringify(trabajador)});
+        
+        const data= await res.json();
+        console.log(data);
+
+        setTrabajador([...trabajadores,data]);
+
+    }
+
     return (
-        <div>
+        <div className='trabajadorcrud'>
             <TrabajadoresHeader showAddWorker={()=>setShowAddWorker(!showAddWorker)} showAdd={showAddWorker}/>
-            {showAddWorker && <TrabajadoresForm />}
+            {showAddWorker && <TrabajadoresForm onAdd={addWorker}/>}
             
             <TrabajadoresLista trabajadores={trabajadores}/>
             
