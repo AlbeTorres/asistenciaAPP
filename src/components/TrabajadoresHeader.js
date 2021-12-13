@@ -5,7 +5,7 @@ import '../assets/styles/components/Trabajadoresheader.scss';
 const TrabajadoresHeader = ({showAdd,showAddWorker}) => {
     return (
         <div className="workerform">
-            <h1 > Gestionar trabajadores</h1>
+            <h1> Gestionar trabajadores</h1>
             <Button color={showAdd ? 'red' :'green'  }  text={showAdd ? 'Cerrar' : 'Agregar' } onClick={showAddWorker} />
 
         </div>
